@@ -43,15 +43,11 @@ list(
 set(CUDNN_LIB_NAME "")
 
 if(LINUX)
-  set(CUDNN_LIB_NAME "libcudnn.so")
-  if(${CUDA_VERSION} GREATER_EQUAL 12.6)
-    set(CUDNN_LIB_NAME "libcudnn.so.9")
-  endif()
+  set(CUDNN_LIB_NAME "libcudnn.so.9")
 endif()
 
 if(WIN32)
-  # only support cudnn7
-  set(CUDNN_LIB_NAME "cudnn.lib" "cudnn64_7.dll")
+  set(CUDNN_LIB_NAME "cudnn.lib" "cudnn64_9.dll")
 endif()
 
 if(APPLE)

@@ -179,12 +179,6 @@ void ConvTransposeRawGPUDNNKernel(const Context& dev_ctx,
   }
   T* transformed_out_data = transformed_out.data<T>();
 
-#ifndef PADDLE_WITH_HIP
-  CUDNN_ENFORCE_TENSOR_SIZE_SUPPORTED(transformed_x);
-  CUDNN_ENFORCE_TENSOR_SIZE_SUPPORTED(filter);
-  CUDNN_ENFORCE_TENSOR_SIZE_SUPPORTED(transformed_out);
-#endif
-
   GPUDNNDataLayout layout;
 
   int iwo_groups = groups;

@@ -482,34 +482,19 @@ void* GetCUDNNDsoHandle() {
       "Toolkit\\CUDA\\v10.0\n"
       "You should do this according to your CUDA installation directory and "
       "CUDNN version.");
-  if (CUDA_VERSION >= 11000 && CUDA_VERSION < 12030) {
 #ifdef PADDLE_WITH_PIP_CUDA_LIBRARIES
-    return GetDsoHandleFromSearchPath(
-        FLAGS_cuda_dir, "cudnn64_8.dll", true, {cuda_lib_path}, win_warn_meg);
+  return GetDsoHandleFromSearchPath(
+      FLAGS_cuda_dir, "cudnn64_9.dll", true, {cuda_lib_path}, win_warn_meg);
 #else
-    return GetDsoHandleFromSearchPath(
-        FLAGS_cuda_dir, win_cudnn_lib, true, {cuda_lib_path}, win_warn_meg);
+  return GetDsoHandleFromSearchPath(
+      FLAGS_cuda_dir, win_cudnn_lib, true, {cuda_lib_path}, win_warn_meg);
 #endif
-  } else if (CUDA_VERSION >= 12030) {
-#ifdef PADDLE_WITH_PIP_CUDA_LIBRARIES
-    return GetDsoHandleFromSearchPath(
-        FLAGS_cuda_dir, "cudnn64_9.dll", true, {cuda_lib_path}, win_warn_meg);
-#else
-    return GetDsoHandleFromSearchPath(
-        FLAGS_cuda_dir, win_cudnn_lib, true, {cuda_lib_path}, win_warn_meg);
-#endif
-  }
 #elif defined(PADDLE_WITH_HIP)
   return GetDsoHandleFromSearchPath(FLAGS_miopen_dir, "libMIOpen.so", false);
 #else
 #ifdef PADDLE_WITH_PIP_CUDA_LIBRARIES
-  if (CUDA_VERSION >= 12030) {
-    return GetDsoHandleFromSearchPath(
-        FLAGS_cudnn_dir, "libcudnn.so.9", false, {cuda_lib_path});
-  } else {
-    return GetDsoHandleFromSearchPath(
-        FLAGS_cudnn_dir, "libcudnn.so.8", false, {cuda_lib_path});
-  }
+  return GetDsoHandleFromSearchPath(
+      FLAGS_cudnn_dir, "libcudnn.so.9", false, {cuda_lib_path});
 #else
   return GetDsoHandleFromSearchPath(
       FLAGS_cudnn_dir, "libcudnn.so", false, {cuda_lib_path});

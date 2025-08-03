@@ -179,11 +179,6 @@ void ConvTransposeGradRawGPUDNNKernel(const Context& dev_ctx,
   out_vec = common::vectorize<int>(transformed_dout.dims());
 
   // ------------------- cudnn descriptors ---------------------
-#ifndef PADDLE_WITH_HIP
-  CUDNN_ENFORCE_TENSOR_SIZE_SUPPORTED(transformed_dout);
-  CUDNN_ENFORCE_TENSOR_SIZE_SUPPORTED(filter);
-  CUDNN_ENFORCE_TENSOR_SIZE_SUPPORTED(x_transpose);
-#endif
 
   GPUDNNDataLayout layout;
 

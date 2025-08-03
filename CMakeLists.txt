@@ -338,7 +338,7 @@ option(WITH_RECORD_BUILDTIME
 option(WITH_CUSTOM_DEVICE "Compile with custom device support" OFF)
 option(WITH_FLPS "FL PS mode" OFF)
 option(WITH_CUDNN_FRONTEND
-       "Compile with CUDNN Frontend API support (experimental)" OFF)
+       "Compile with CUDNN Frontend API support (experimental)" ON)
 option(WITH_SHARED_IR "Compile PaddlePaddle with SHARED LIB of IR" ON)
 option(WITH_NVCC_LAZY
        "Compile PaddlePaddle with nvcc lazy mode, used for CI-Inference only."
